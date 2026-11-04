@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0b">
+  <meta name="description" content="Um pouquinho de espanhol, todos os dias. Converse, pratique com a voz e descubra palavras com o Profe.">
+  <title>Profe — seu espanhol começa aqui</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ffc83d'/%3E%3Ctext x='17' y='47' font-family='Georgia' font-size='47' font-weight='bold' fill='%230a0a0b'%3Ep%3C/text%3E%3C/svg%3E">
+  <style>
+    :root{--paper:#0a0a0b;--white:#141416;--ink:#f5f5f7;--muted:#a1a1aa;--green:#3ddc97;--yellow:#ffc83d;--coral:#ff5a5f;--violet:#8b7cff;--line:#26262b;--sidebar:248px;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);font-synthesis:none;color-scheme:dark}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper)}button,input,textarea,select{font:inherit}button{cursor:pointer;color:inherit}button,select{touch-action:manipulation}button:disabled{cursor:not-allowed;opacity:.45}button:focus-visible,a:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--yellow);outline-offset:4px}svg{display:block;flex-shrink:0}.icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}
+    .app{display:flex;height:100dvh;min-height:450px}.sidebar{width:var(--sidebar);flex-shrink:0;background:#0d0d0f;border-right:1px solid #1f1f24;display:flex;flex-direction:column;padding:30px 20px 23px;z-index:20}.brand{display:flex;align-items:center;gap:11px;margin-bottom:40px}.brand-mark{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:var(--yellow);color:#0a0a0b;font-size:23px;font-weight:850;letter-spacing:-1px;flex-shrink:0}.logo{font-size:25px;font-weight:800;letter-spacing:-1px;line-height:1;color:var(--ink)}.brand-caption{font-size:10px;letter-spacing:.1px;color:var(--muted);margin-top:7px}.language-mark{display:none}
+    .nav{display:grid;gap:6px}.nav-button{background:none;border:0;display:flex;gap:12px;align-items:center;border-radius:11px;padding:14px 13px;text-align:left;font-size:13px;font-weight:500;color:var(--muted);min-height:46px}.nav-button.active{color:var(--ink);background:#1c1c21}.nav-button:hover{background:#17171b;color:var(--ink)}.nav-button .icon{width:18px;height:18px}.nav-button.active .icon{color:var(--coral)}#nav-quiz .icon{color:var(--yellow)}#words-nav .icon{color:var(--green)}.count{margin-left:auto;font-size:10px;background:#2b2b31;padding:3px 7px;border-radius:6px;min-width:22px;text-align:center;color:#d9d9df}
+    .notebook{margin-top:32px;display:flex;flex:1;flex-direction:column;min-height:0}.section-label{font-size:10px;font-weight:700;letter-spacing:1.6px;color:#8b8b94;text-transform:uppercase}.notebook-heading{display:flex;align-items:center;justify-content:space-between;margin:0 0 16px;padding:0 2px;gap:9px}.notebook-heading h2{font-size:10px;margin:0}.notebook-hint{font-size:10px;color:#71717a}.words-list{list-style:none;margin:0;padding:0;overflow:auto;min-height:0;display:grid;align-content:start;gap:10px;scrollbar-width:thin;max-height:100%}.word-card{border:1px solid var(--line);background:var(--white);padding:13px 10px 13px 13px;border-radius:12px;display:flex;align-items:center;gap:8px;min-width:0}.word-card::before{content:"";height:7px;width:7px;border-radius:50%;background:var(--green);flex-shrink:0}.word-card:nth-child(4n+2)::before{background:var(--yellow)}.word-card:nth-child(4n+3)::before{background:var(--coral)}.word-card:nth-child(4n+4)::before{background:var(--violet)}.word-text{min-width:0;flex:1}.word-text strong{display:block;font-size:13px;font-weight:600;overflow-wrap:anywhere}.word-text span{font-size:12px;color:var(--muted);display:block;margin-top:4px;overflow-wrap:anywhere}.icon-button{width:36px;height:36px;display:inline-flex;justify-content:center;align-items:center;border:0;border-radius:9px;background:transparent;flex-shrink:0}.icon-button:hover{background:#27272d}.word-delete{width:26px;height:28px;color:#7c7c87}.word-delete:hover{color:var(--coral)}.word-delete .icon{width:15px;height:15px}.word-empty{border:1px dashed #2a2a31;border-radius:14px;text-align:center;padding:24px 12px;color:var(--muted);font-size:12px;line-height:1.7}.word-empty .icon{margin:0 auto 12px;color:var(--green);width:27px;height:27px}.word-empty p{margin:0}.word-empty strong{color:#d0d0d7;display:block;font-weight:500;margin-bottom:5px}
+    .daily-card{margin-top:24px;padding:19px 16px 17px;background:var(--white);border:1px solid var(--line);color:var(--ink);border-radius:14px;position:relative;overflow:hidden;flex-shrink:0}.daily-card .section-label{color:var(--green);font-size:9px;letter-spacing:1.2px}.daily-card h3{font-weight:650;font-size:21px;line-height:1.4;margin:14px 0 9px;letter-spacing:-.6px;position:relative}.daily-card p{font-size:11px;color:var(--muted);line-height:1.8;max-width:170px;margin:0}.daily-card .sun{position:absolute;right:16px;top:17px;width:24px;height:24px;color:var(--yellow)}.sidebar-footer{display:flex;gap:7px;align-items:center;font-size:9px;color:#777780;margin:19px 2px 0;line-height:1.5}.sidebar-footer .icon{width:13px;height:13px}#close-words{display:none}.sidebar-new-chat{margin-top:13px;display:flex;align-items:center;gap:8px;background:transparent;border:0;color:#9b9ba6;font-size:11px;padding:10px 12px}.sidebar-new-chat .icon{width:16px;height:16px}.sidebar-new-chat:hover{color:var(--ink)}
+    .main{flex:1;min-width:0;display:flex;flex-direction:column;position:relative}.topbar{display:flex;align-items:center;justify-content:space-between;padding:24px 32px 23px;border-bottom:1px solid #1f1f24;gap:14px;background:var(--paper)}.topbar-context{display:flex;align-items:center;gap:12px;min-width:0}.context-icon{display:none}.context-name{font-size:17px;font-weight:700;letter-spacing:-.4px}.connection{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);margin-top:7px}.status-dot{height:5px;width:5px;background:#777780;border-radius:50%}.status-dot.ready{background:var(--green)}.status-dot.setup{background:var(--yellow)}.header-actions{display:flex;align-items:center;gap:12px}.level-control{display:flex;gap:9px;align-items:center}.level-control>span{font-size:10px;color:var(--muted)}.select-wrap{position:relative}.select-wrap .icon{pointer-events:none;position:absolute;right:11px;top:11px;width:13px;height:13px;color:var(--green)}select{appearance:none;border:1px solid #24503e;background:#11251c;border-radius:9px;font-size:11px;font-weight:650;padding:10px 29px 10px 11px;color:var(--green);max-width:175px}select:disabled{opacity:.55}.header-separator{height:25px;width:1px;background:var(--line)}.new-chat{border:0;background:transparent;display:flex;gap:7px;align-items:center;font-size:11px;color:var(--muted);padding:8px 3px}.new-chat:hover{color:var(--ink)}.new-chat .icon{width:16px;height:16px}.mobile-logo{display:none}#open-words{display:none}
+    .conversation-scroll{flex:1;min-height:0;overflow-y:auto;scroll-behavior:smooth;padding:34px 32px 25px;scrollbar-width:thin}.conversation-inner{max-width:840px;margin:0 auto}.intro{padding:8px 0 27px}.eyebrow{font-size:10px;color:var(--yellow);letter-spacing:1.9px;font-weight:700;display:flex;align-items:center;gap:8px}.eyebrow::before{content:"";width:18px;height:2px;background:var(--yellow)}h1{font-weight:750;font-size:clamp(30px,3vw,42px);line-height:1.18;letter-spacing:-1.5px;margin:17px 0 13px}h1 em{color:var(--yellow);font-weight:750;font-style:normal}.intro-description{margin:0;font-size:13px;line-height:1.8;color:var(--muted);max-width:490px}.welcome{display:flex;gap:12px;align-items:flex-start;margin-top:18px}.avatar{width:36px;height:36px;flex-shrink:0;display:grid;place-items:center;background:var(--yellow);color:#0a0a0b;border-radius:50%;font-weight:800;font-size:18px;line-height:1;text-transform:uppercase}.welcome-card{background:var(--white);border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:21px 21px 19px;width:100%}.teacher-label{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;margin-bottom:13px;color:var(--yellow)}.teacher-label small{font-size:8px;font-weight:600;letter-spacing:.7px;color:#8d8d96;background:#202024;padding:4px 6px;border-radius:4px}.welcome-card h2{font-size:21px;font-weight:650;letter-spacing:-.6px;line-height:1.5;margin:0 0 10px}.welcome-card p{font-size:13px;color:var(--muted);line-height:1.85;margin:0;max-width:560px}.welcome-card p+p{margin-top:10px}.spanish-phrase{color:var(--green);font-weight:600}.welcome-footer{margin-top:18px;border-top:1px solid var(--line);padding-top:13px;display:flex;align-items:center;gap:7px;font-size:10px;color:#85858f;line-height:1.6}.welcome-footer .icon{width:14px;height:14px;color:var(--yellow)}.suggestions{margin:26px 0 8px 48px}.suggestions-label{font-size:9px;font-weight:650;color:#81818c;letter-spacing:1.2px;text-transform:uppercase;margin:0 0 13px}.suggestion-grid{display:flex;gap:9px;flex-wrap:wrap}.suggestion{min-width:0;border:1px solid #2a2a31;border-radius:10px;background:transparent;display:flex;align-items:center;text-align:left;gap:10px;padding:13px 12px;transition:background .15s,border-color .15s}.suggestion:hover{background:#181815;border-color:#635322}.suggestion .icon{color:var(--yellow);width:18px;height:18px}.suggestion:nth-child(2) .icon{color:var(--coral)}.suggestion:nth-child(3) .icon{color:var(--violet)}.suggestion strong{display:block;font-size:11px;font-weight:550}.suggestion small{display:block;font-size:9px;color:#7c7c88;margin-top:4px}.suggestion .arrow{display:none}
+    .messages{display:flex;flex-direction:column;gap:23px;margin-top:23px}.message{display:flex;gap:12px;min-width:0;animation:appear .2s ease-out}.message-body{min-width:0;max-width:92%;flex:1}.message.user{margin-left:48px;align-self:flex-end;max-width:85%;flex-direction:row-reverse}.message.user .message-body{background:var(--violet);color:#100c26;border:1px solid var(--violet);border-radius:15px 15px 4px 15px;padding:13px 17px}.message.user .message-text{font-size:14px;font-weight:500}.message.user .message-meta{color:#28203f}.message.assistant .message-body{border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:18px 20px;background:var(--white)}.message-text{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.85;margin:0}.message-meta{font-size:10px;color:var(--yellow);margin:0 0 8px;font-weight:650}.message-actions{display:flex;align-items:center;gap:13px;margin-top:15px;flex-wrap:wrap}.listen-button{border:1px solid #2d3c32;background:#141e19;border-radius:7px;color:var(--green);font-size:10px;display:flex;align-items:center;gap:6px;padding:7px 9px}.listen-button:hover{background:#1d3026;border-color:#3d6c53}.listen-button .icon{width:14px;height:14px}.listen-button.playing{color:var(--yellow);background:#292411;border-color:#524621}.word-notice{font-size:9px;color:#858591}.loading-dots{display:flex;gap:5px;align-items:center;height:24px}.loading-dots span{height:5px;width:5px;background:var(--yellow);border-radius:50%;animation:pulse 1.2s infinite}.loading-dots span:nth-child(2){animation-delay:.2s}.loading-dots span:nth-child(3){animation-delay:.4s}
+    .composer-area{padding:16px 32px 23px;background:var(--paper);border-top:1px solid #1f1f24;flex-shrink:0}.composer-inner{max-width:840px;margin:0 auto}.practice-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;gap:10px;padding:0 1px}.practice-note{display:flex;align-items:center;gap:7px;font-size:10px;color:#8b8b95}.practice-note .icon{width:13px;height:13px;color:var(--yellow)}.quiz-button{border:1px solid #363025;border-radius:99px;background:#19170f;display:flex;align-items:center;gap:6px;padding:9px 12px;font-size:10px;color:var(--yellow);white-space:nowrap;font-weight:600}.quiz-button .icon{height:13px;width:13px}.quiz-button:hover{background:#292415;border-color:#65542a}.composer{display:flex;align-items:flex-end;border:1px solid #2d2d34;border-radius:14px;background:var(--white);padding:10px 11px 10px 17px;gap:12px}.composer:focus-within{border-color:#776534;box-shadow:0 0 0 2px #ffc83d0a}textarea{border:0;resize:none;min-height:35px;max-height:130px;flex:1;min-width:0;padding:7px 0 4px;background:transparent;font-size:13px;line-height:1.7;color:var(--ink)}textarea:focus-visible{outline:none}textarea::placeholder{color:#7e7e89}.composer-buttons{display:flex;align-items:center;gap:7px}.mic-button{color:#12090b;background:var(--coral);border:0;border-radius:50%;width:37px;height:37px;display:grid;place-items:center}.mic-button:hover{background:#ff7b80}.mic-button.recording{color:#fff;background:#b52d3d;animation:pulse 1.3s infinite}.mic-button .icon{height:19px;width:19px}.send-button{height:37px;width:40px;border:0;background:var(--yellow);color:#0a0a0b;border-radius:10px;display:grid;place-items:center}.send-button:hover{background:#ffda77}.send-button .icon{width:20px;height:20px}.composer-footer{display:flex;justify-content:space-between;gap:12px;font-size:9px;color:#73737e;margin-top:10px;padding:0 2px}.composer-footer span{display:flex;align-items:center;gap:5px}.composer-footer .icon{width:11px;height:11px}.composer-footer kbd{font-family:inherit;background:#1f1f24;border:1px solid #2c2c34;border-radius:3px;padding:1px 3px;font-size:8px}
+    .setup-banner{margin:0 0 22px;border:1px solid #55451c;background:#1d190e;padding:13px 15px;border-radius:10px;font-size:12px;line-height:1.7;color:#d7c48e;display:flex;align-items:flex-start;gap:10px}.setup-banner .icon{margin-top:2px;width:17px;height:17px;color:var(--yellow)}.setup-banner p{margin:0}.setup-banner strong{display:block;font-weight:600}.setup-banner code{font-size:11px;background:#312b18;padding:1px 3px;border-radius:3px}.setup-banner button{font-size:11px;padding:0;background:none;border:0;text-decoration:underline;color:var(--yellow);margin-top:6px}.error-banner{border:1px solid #613139;background:#241418;color:#ffacb0;border-radius:9px;padding:11px 12px;margin-bottom:11px;display:flex;gap:8px;font-size:12px;line-height:1.6}.error-banner .icon{width:16px;height:16px;margin-top:2px}.error-banner p{margin:0}.error-banner .icon-button{margin-left:auto;width:24px;height:24px}.voice-note{font-size:10px;line-height:1.6;color:#c2a8a8;margin:0 0 9px}.quiz-progress{background:#102219;border:1px solid #254b36;border-radius:10px;padding:13px 15px;margin-bottom:13px;display:flex;align-items:center;gap:13px;color:var(--green)}.quiz-info{flex:1;min-width:0}.quiz-info strong{font-size:12px;color:var(--green)}.quiz-info p{font-size:10px;color:#94b39f;margin:5px 0 0}.progress-track{display:flex;gap:4px;margin-top:9px;max-width:250px}.progress-track span{height:4px;border-radius:3px;background:#2b4332;flex:1}.progress-track span.done{background:var(--green)}.quiz-exit{background:none;border:0;font-size:10px;text-decoration:underline;color:#93b39e;padding:7px}.overlay{display:none}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);max-width:min(460px,90vw);padding:13px 18px;border:1px solid #41404a;border-radius:10px;background:#222227;color:var(--ink);box-shadow:0 8px 35px #0008;z-index:40;font-size:12px;line-height:1.6;text-align:center}.message-divider{font-size:10px;color:#878791;text-align:center;padding:4px 0;display:flex;align-items:center;gap:12px}.message-divider::before,.message-divider::after{content:"";height:1px;background:var(--line);flex:1}@keyframes appear{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%,100%{opacity:.45}50%{opacity:1}}
+    @media(min-width:1280px){.main{margin-right:276px}.notebook{position:fixed;right:0;top:0;bottom:0;width:276px;margin:0;padding:32px 20px;background:#0d0d0f;border-left:1px solid #1f1f24}.notebook-heading{margin-bottom:22px}.notebook-heading h2{font-size:11px}.daily-card{margin-top:auto}.word-card{padding:14px 10px 14px 12px}.word-text strong{font-size:13px}.level-control>span:first-child{display:none}.new-chat span{display:none}.topbar{padding-left:28px;padding-right:28px}.conversation-scroll{padding-left:28px;padding-right:28px}.composer-area{padding-left:28px;padding-right:28px}.header-actions{gap:8px}.context-name{font-size:16px}.connection{font-size:10px}.suggestion small{display:none}.suggestion{padding:11px 12px}.suggestion-grid{gap:8px}.suggestions{margin-left:48px}.notebook-hint{font-size:9px}}
+    @media(min-width:1600px){:root{--sidebar:264px}.main{margin-right:310px}.notebook{width:310px;padding:32px 24px}.conversation-scroll{padding-top:42px}.intro{padding-top:16px}.topbar{padding-left:40px;padding-right:40px}.conversation-scroll,.composer-area{padding-left:40px;padding-right:40px}.word-text strong{font-size:14px}.word-text span{font-size:13px}.context-name{font-size:20px}.connection{font-size:12px}}
+    @media(max-width:1100px){:root{--sidebar:230px}.sidebar{padding:26px 17px 20px}.topbar{padding:22px 26px}.conversation-scroll{padding:25px 26px}.composer-area{padding:13px 26px 19px}.header-actions{gap:9px}.level-control>span:first-child{display:none}.new-chat span{display:none}.brand{gap:9px}.brand-caption{font-size:9px}.nav-button{padding-left:10px;padding-right:10px;font-size:12px}.daily-card h3{font-size:20px}}
+    @media(max-width:760px){.app{min-height:0}.sidebar{position:fixed;left:0;top:0;bottom:0;transform:translateX(-100%);transition:transform .2s ease;width:min(320px,86vw);box-shadow:8px 0 35px #0009;padding:25px 20px 18px}.sidebar.open{transform:translateX(0)}.sidebar.open+#overlay{display:block;position:fixed;inset:0;background:#0009;backdrop-filter:blur(3px);z-index:19;border:0}.sidebar .brand{margin-bottom:23px}.sidebar .brand-caption{font-size:10px}#close-words{display:flex;margin-left:auto;color:#a1a1aa}.sidebar .notebook{margin-top:24px}.sidebar .daily-card{display:none}.sidebar-footer{margin-top:17px}.sidebar-new-chat{margin-top:14px}.topbar{padding:17px 18px;gap:8px;min-height:73px}.topbar-context,.header-separator,.new-chat{display:none}.mobile-logo{display:flex;align-items:center;gap:9px;font-size:23px;letter-spacing:-.9px}.mobile-logo::before{content:"¡P";display:grid;place-items:center;font-size:20px;background:var(--yellow);color:#0a0a0b;width:34px;height:34px;border-radius:10px;font-weight:800}.header-actions{gap:9px;margin-left:auto}#open-words{display:flex;position:relative;color:var(--green);border:1px solid #2a2a31;background:#141416;height:34px;width:34px}.mobile-word-count{position:absolute;right:-4px;top:-4px;background:var(--green);color:#07140e;font-size:8px;font-weight:750;height:15px;min-width:15px;border-radius:10px;display:grid;place-items:center;padding:0 3px}select{font-size:10px;padding:9px 26px 9px 9px;max-width:145px}.select-wrap .icon{top:10px}.conversation-scroll{padding:24px 18px 20px}.intro{padding:2px 0 19px}.eyebrow{font-size:8px;letter-spacing:1.6px}h1{font-size:32px;margin-top:14px;line-height:1.2;letter-spacing:-1.2px}.intro-description{font-size:12px;line-height:1.8;max-width:310px}.desktop-break{display:none}.welcome{margin-top:12px;gap:9px}.avatar{width:29px;height:29px;font-size:15px}.welcome-card{padding:16px 16px 14px}.welcome-card h2{font-size:18px;line-height:1.45;letter-spacing:-.5px}.welcome-card p{font-size:12px;line-height:1.85}.teacher-label{font-size:10px;margin-bottom:11px}.welcome-footer{font-size:9px;line-height:1.6;margin-top:14px;padding-top:12px}.suggestions{margin-left:38px;margin-top:20px}.suggestions-label{font-size:8px;letter-spacing:1px}.suggestion-grid{gap:8px}.suggestion{padding:10px 11px;gap:7px}.suggestion strong{font-size:10px}.suggestion small{display:none}.suggestion .icon{width:16px;height:16px}.composer-area{padding:11px 14px max(15px,env(safe-area-inset-bottom))}.practice-bar{margin-bottom:10px}.practice-note{font-size:9px;gap:5px}.practice-note .icon{width:12px;height:12px}.quiz-button{font-size:9px;padding:7px 9px}.composer{padding:8px 9px 8px 13px;gap:7px;border-radius:12px}.composer-buttons{gap:6px}textarea{font-size:16px;line-height:1.5;min-height:34px;padding-top:5px}.mic-button,.send-button{height:34px;width:32px}.send-button{border-radius:9px}.composer-footer{font-size:8px;justify-content:center;margin-top:9px}.composer-footer .keyboard-hint{display:none}.messages{gap:21px;margin-top:19px}.message{gap:9px}.message.assistant .message-body{padding:15px 16px}.message-text{font-size:13px}.message.user{margin-left:35px;max-width:89%}.message.user .message-body{padding:12px 15px}.message.user .message-text{font-size:13px}.message-body{max-width:100%}.word-notice{font-size:8px}.listen-button{font-size:9px}.setup-banner{font-size:11px;padding:11px 12px;margin-bottom:18px}.error-banner{font-size:11px}.quiz-progress{padding:10px 12px;margin-bottom:10px}.quiz-info strong{font-size:11px}.voice-note{font-size:9px}.toast{bottom:18px;font-size:11px}}
+    @media(max-width:360px){.mobile-logo{font-size:20px;gap:6px}.mobile-logo::before{width:30px;height:30px;font-size:18px}.topbar{padding-left:12px;padding-right:12px;gap:5px}.header-actions{gap:7px}select{max-width:135px;font-size:9px}.conversation-scroll{padding-left:13px;padding-right:13px}}
+    @media(max-height:700px) and (min-width:761px){.daily-card{display:none}.brand{margin-bottom:24px}.intro{padding-top:0}h1{font-size:32px}.conversation-scroll{padding-top:22px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-8 8H4l-1 2V11.5a8.5 8.5 0 1 1 17 0Z"/><path d="M7 10h9M7 14h6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5v15M12 5C9 3 5 3 2 4v15c3-1 7-1 10 1 3-2 7-2 10-1V4c-3-1-7-1-10 1Z"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3L12 3Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-cup" viewBox="0 0 24 24"><path d="M4 8h12v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8Zm12 1h2a3 3 0 1 1 0 6h-2M7 3v2m5-2v2M3 22h15"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="m6 12-2-3a2 2 0 0 1 3-2l3 4-2-6a1.8 1.8 0 0 1 3-1l2 6-1-7a1.7 1.7 0 0 1 3 0l1 7 1-4a1.7 1.7 0 0 1 3 1l-1 8c-1 5-5 8-9 6-2-1-4-4-6-5a2 2 0 0 1 2-3l3 2"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="m3 11 8 2 2 8 3-6 6-12-12 6-7 2Zm8 2 6-6"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5V4Zm4 4a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 1v2m0 18v2M1 12h2m18 0h2M4.2 4.2l1.4 1.4m12.8 12.8 1.4 1.4m0-15.6-1.4 1.4M5.6 18.4l-1.4 1.4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.1"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </svg>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Caderno de palavras">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">¡P</span><div><div class="logo" aria-label="Profe">Profe</div><div class="brand-caption">Espanhol sem enrolação</div></div><span class="language-mark" aria-hidden="true">¡hola!</span><button class="icon-button" id="close-words" aria-label="Fechar caderno"><svg class="icon"><use href="#i-close"/></svg></button></div>
+      <nav class="nav" aria-label="Aprendizado"><button class="nav-button active" id="chat-nav"><svg class="icon"><use href="#i-chat"/></svg>Conversa</button><button class="nav-button" id="nav-quiz"><svg class="icon"><use href="#i-spark"/></svg>Quiz rápido</button><button class="nav-button" id="words-nav"><svg class="icon"><use href="#i-book"/></svg>Palavras novas<span class="count" id="words-count">0</span></button></nav>
+      <section class="notebook" aria-labelledby="words-heading"><div class="notebook-heading"><h2 class="section-label" id="words-heading" tabindex="-1">Palavras novas</h2><span class="notebook-hint">salvo aqui</span></div><div class="word-empty" id="words-empty"><svg class="icon"><use href="#i-book"/></svg><strong>Cada conversa, uma descoberta.</strong><p>As palavras que você aprender<br>vão morar aqui.</p></div><ul class="words-list" id="words-list" aria-label="Palavras salvas"></ul></section>
+      <div class="daily-card"><svg class="icon sun"><use href="#i-sun"/></svg><span class="section-label">Um passo de cada vez</span><h3>Poquito a poco,<br>se llega lejos.</h3><p>De pouquinho em pouquinho,<br>a gente vai longe.</p></div>
+      <button class="sidebar-new-chat" id="sidebar-new-chat"><svg class="icon"><use href="#i-plus"/></svg>Nova conversa</button><div class="sidebar-footer"><svg class="icon"><use href="#i-shield"/></svg>Seu caderno fica neste navegador.</div>
+    </aside>
+    <button class="overlay" id="overlay" aria-label="Fechar caderno" tabindex="-1"></button>
+    <main class="main">
+      <header class="topbar"><div class="mobile-logo logo" aria-label="Profe">Profe</div><div class="topbar-context"><span class="context-icon"><svg class="icon"><use href="#i-chat"/></svg></span><div><div class="context-name">Conversa com o Profe</div><div class="connection"><span id="status-dot" class="status-dot"></span><span id="status-text">Conectando ao Profe…</span></div></div></div><div class="header-actions"><label class="level-control" for="level-select"><span>Seu nível</span><span class="select-wrap"><select id="level-select" aria-label="Seu nível de espanhol"><option value="A1">A1 · Primeiros passos</option><option value="A2">A2 · Já sei um pouco</option><option value="B1">B1 · Mais confiança</option></select><svg class="icon"><use href="#i-down"/></svg></span></label><span class="header-separator"></span><button class="new-chat" id="new-chat" title="Nova conversa"><svg class="icon"><use href="#i-plus"/></svg><span>Nova conversa</span></button><button class="icon-button" id="open-words" aria-label="Abrir palavras novas" aria-controls="sidebar" aria-expanded="false"><svg class="icon"><use href="#i-book"/></svg><span class="mobile-word-count" id="mobile-word-count" hidden>0</span></button></div></header>
+      <div class="conversation-scroll" id="conversation-scroll"><div class="conversation-inner">
+        <div class="setup-banner" id="setup-banner" hidden><svg class="icon"><use href="#i-info"/></svg><div><p id="setup-message"></p><button id="recheck-connection" type="button">Verificar conexão novamente</button></div></div>
+        <section class="intro" id="intro"><div class="eyebrow">UN POQUITO, CADA DÍA</div><h1>Vamos falar <em>espanhol?</em></h1><p class="intro-description">Pode chegar com um “hola”. O resto a gente aprende juntos,<br class="desktop-break"> uma conversa de cada vez.</p></section>
+        <div class="welcome" id="welcome"><div class="avatar" aria-hidden="true">p</div><div class="welcome-card"><div class="teacher-label">Profe <small>SEU PROFESSOR</small></div><h2>¡Hola! Que bom ter você aqui.</h2><p>Eu sou o Profe, seu parceiro nessa viagem pelo espanhol. Vou explicar em português, praticar com você em espanhol e ajudar com cada errinho pelo caminho.</p><p>Sem pressa, sem vergonha. <span class="spanish-phrase" lang="es">¿Cómo te llamas?</span></p><div class="welcome-footer"><svg class="icon"><use href="#i-spark"/></svg>Comece escrevendo, ou use o microfone para praticar.</div></div></div>
+        <section class="suggestions" id="suggestions" aria-label="Ideias para começar"><p class="suggestions-label">Um empurrãozinho para começar</p><div class="suggestion-grid"><button class="suggestion" data-prompt="Quero aprender a me apresentar em espanhol."><svg class="icon"><use href="#i-wave"/></svg><span><strong>Me apresentar</strong><small>Um hola abre portas</small></span><svg class="icon arrow"><use href="#i-arrow"/></svg></button><button class="suggestion" data-prompt="Como peço um café em espanhol?"><svg class="icon"><use href="#i-cup"/></svg><span><strong>Pedir um café</strong><small>Un café, por favor</small></span><svg class="icon arrow"><use href="#i-arrow"/></svg></button><button class="suggestion" data-prompt="Me ensine frases úteis para uma viagem."><svg class="icon"><use href="#i-plane"/></svg><span><strong>Preparar uma viagem</strong><small>Próxima parada: español</small></span><svg class="icon arrow"><use href="#i-arrow"/></svg></button></div></section>
+        <div class="messages" id="messages" role="log" aria-label="Conversa com o Profe" aria-live="polite" aria-relevant="additions"></div>
+      </div></div>
+      <div class="composer-area"><div class="composer-inner">
+        <div class="quiz-progress" id="quiz-progress" hidden><svg class="icon"><use href="#i-spark"/></svg><div class="quiz-info"><strong id="quiz-title"></strong><p id="quiz-subtitle"></p><div class="progress-track" id="progress-track" aria-hidden="true"></div></div><button class="quiz-exit" id="quiz-exit">Sair do quiz</button></div>
+        <div class="error-banner" id="error-banner" role="alert" hidden><svg class="icon"><use href="#i-info"/></svg><p id="error-text"></p><button class="icon-button" id="dismiss-error" aria-label="Fechar aviso"><svg class="icon"><use href="#i-close"/></svg></button></div>
+        <p class="voice-note" id="voice-note" aria-live="polite" hidden></p>
+        <div class="practice-bar"><span class="practice-note"><svg class="icon"><use href="#i-sun"/></svg>Um pouquinho hoje faz diferença.</span><button class="quiz-button" id="quiz-button"><svg class="icon"><use href="#i-spark"/></svg>Quiz · 5 perguntas</button></div>
+        <form class="composer" id="chat-form"><label class="sr-only" for="message-input">Sua mensagem para o Profe</label><textarea id="message-input" rows="1" maxlength="2000" placeholder="Escreva em português ou arrisque em espanhol…" enterkeyhint="send" aria-describedby="voice-note"></textarea><div class="composer-buttons"><button class="mic-button" id="mic-button" type="button" aria-label="Falar em espanhol" aria-pressed="false" title="Falar em espanhol"><svg class="icon"><use href="#i-mic"/></svg></button><button class="send-button" id="send-button" type="submit" aria-label="Enviar mensagem" title="Enviar mensagem" disabled><svg class="icon"><use href="#i-arrow"/></svg></button></div></form>
+        <div class="composer-footer"><span class="keyboard-hint"><kbd>Enter</kbd> para enviar · <kbd>Shift + Enter</kbd> para nova linha</span><span><svg class="icon"><use href="#i-spark"/></svg>Aprender é praticar. A IA também pode errar.</span></div>
+      </div></div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <script>
+  'use strict';
+  (() => {
+    const $ = (id) => document.getElementById(id);
+    const storageKey = 'profe.words.v1';
+    const speechSupported = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const state = { history: [], words: [], quiz: null, busy: false, recognition: null, recording: false, speechButton: null, speechGeneration: 0, toastTimer: null, ready: null, drawerFocus: null };
+    const input = $('message-input');
+    const icon = (name) => {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'icon'); svg.setAttribute('aria-hidden', 'true');
+      const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      use.setAttribute('href', '#i-' + name); svg.append(use); return svg;
+    };
+    const toast = (text) => { clearTimeout(state.toastTimer); $('toast').textContent = text; $('toast').hidden = false; state.toastTimer = setTimeout(() => { $('toast').hidden = true; }, 4500); };
+    const announceVoice = (text) => { $('voice-note').textContent = text; $('voice-note').hidden = !text; };
+    const showError = (message) => { $('error-text').textContent = message; $('error-banner').hidden = false; };
+    const clearError = () => { $('error-banner').hidden = true; $('error-text').textContent = ''; };
+    const scrollBottom = () => { const scroll = $('conversation-scroll'); scroll.scrollTop = scroll.scrollHeight; };
+    const resizeInput = () => { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 130) + 'px'; };
+    const activeQuiz = () => state.quiz && !state.quiz.complete;
+    function syncControls() {
+      $('send-button').disabled = state.busy || !input.value.trim();
+      input.readOnly = state.busy;
+      $('level-select').disabled = state.busy || !!activeQuiz();
+      $('quiz-button').disabled = state.busy || !!activeQuiz();
+      $('nav-quiz').disabled = state.busy || !!activeQuiz();
+      $('new-chat').disabled = state.busy;
+      $('sidebar-new-chat').disabled = state.busy;
+      $('quiz-exit').disabled = state.busy;
+      $('mic-button').disabled = state.busy || !Recognition;
+      document.querySelectorAll('[data-prompt]').forEach(button => { button.disabled = state.busy || !!activeQuiz(); });
+      $('chat-form').setAttribute('aria-busy', String(state.busy));
+    }
+    function safeWord(word) {
+      return word && typeof word === 'object' && typeof word.spanish === 'string' && typeof word.portuguese === 'string' && word.spanish.trim().length > 0 && word.spanish.length <= 120 && word.portuguese.trim().length > 0 && word.portuguese.length <= 120;
+    }
+    const wordIdentity = (text) => text.trim().normalize('NFC').toLocaleLowerCase('es');
+    function readWords() {
+      try {
+        const value = JSON.parse(localStorage.getItem(storageKey) || '[]');
+        if (!Array.isArray(value)) return;
+        const seen = new Set();
+        state.words = value.filter(safeWord).filter(word => { const key = wordIdentity(word.spanish); if (seen.has(key)) return false; seen.add(key); return true; }).slice(0, 300).map(word => ({spanish: word.spanish.trim(), portuguese: word.portuguese.trim()}));
+      } catch (_) { toast('Não foi possível abrir seu caderno salvo. Você pode continuar conversando.'); }
+    }
+    function saveWords() {
+      try { localStorage.setItem(storageKey, JSON.stringify(state.words)); }
+      catch (_) { toast('Seu navegador não conseguiu salvar o caderno. As palavras continuam nesta tela.'); }
+    }
+    function renderWords() {
+      $('words-list').replaceChildren();
+      for (const word of state.words) {
+        const item = document.createElement('li'); item.className = 'word-card';
+        const text = document.createElement('div'); text.className = 'word-text';
+        const spanish = document.createElement('strong'); spanish.textContent = word.spanish; spanish.lang = 'es';
+        const portuguese = document.createElement('span'); portuguese.textContent = word.portuguese;
+        text.append(spanish, portuguese);
+        const remove = document.createElement('button'); remove.className = 'icon-button word-delete'; remove.setAttribute('aria-label', 'Remover ' + word.spanish); remove.title = 'Remover palavra'; remove.append(icon('close'));
+        remove.addEventListener('click', () => { const position = state.words.indexOf(word); state.words = state.words.filter(item => item !== word); saveWords(); renderWords(); const remaining = $('words-list').querySelectorAll('button'); (remaining[Math.min(position, remaining.length - 1)] || $('words-heading')).focus(); });
+        item.append(text, remove); $('words-list').append(item);
+      }
+      $('words-empty').hidden = state.words.length > 0;
+      $('words-count').textContent = String(state.words.length);
+      $('mobile-word-count').textContent = String(state.words.length);
+      $('mobile-word-count').hidden = !state.words.length;
+    }
+    function collectWords(words) {
+      let count = 0;
+      for (const word of words.slice(0, 5)) {
+        if (!safeWord(word) || state.words.some(saved => wordIdentity(saved.spanish) === wordIdentity(word.spanish))) continue;
+        state.words.unshift({spanish:word.spanish.trim(), portuguese:word.portuguese.trim()}); count++;
+      }
+      if (count) { state.words = state.words.slice(0, 300); saveWords(); renderWords(); }
+      return count;
+    }
+    function resetSpeechButton() {
+      if (!state.speechButton) return;
+      state.speechButton.replaceChildren(icon('sound'), document.createTextNode('Ouvir em espanhol'));
+      state.speechButton.classList.remove('playing'); state.speechButton.setAttribute('aria-pressed', 'false'); state.speechButton = null;
+    }
+    function stopSpeech() { state.speechGeneration++; if (speechSupported) window.speechSynthesis.cancel(); resetSpeechButton(); }
+    function speak(text, button) {
+      if (!speechSupported) { announceVoice('Este navegador não oferece leitura em voz alta. Experimente o Chrome ou Edge.'); return; }
+      if (state.speechButton === button) { stopSpeech(); return; }
+      stopSpeech(); stopRecording(true);
+      const generation = ++state.speechGeneration;
+      const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'es-ES'; utterance.rate = 0.9;
+      const voices = window.speechSynthesis.getVoices();
+      const spanish = voices.find(voice => voice.lang === 'es-ES') || voices.find(voice => /^es[-_]/i.test(voice.lang));
+      if (spanish) utterance.voice = spanish;
+      state.speechButton = button; button.replaceChildren(icon('stop'), document.createTextNode('Parar áudio')); button.classList.add('playing'); button.setAttribute('aria-pressed', 'true');
+      utterance.onend = () => { if (state.speechGeneration === generation) resetSpeechButton(); };
+      utterance.onerror = (event) => { if (state.speechGeneration !== generation) return; resetSpeechButton(); if (!['interrupted', 'canceled'].includes(event.error)) announceVoice('Não foi possível reproduzir a voz. Confira o áudio e as vozes em espanhol do navegador.'); };
+      window.speechSynthesis.speak(utterance);
+    }
+    function appendMessage(role, text, speech = '', wordsAdded = 0) {
+      const row = document.createElement('article'); row.className = 'message ' + role;
+      if (role === 'assistant') { const avatar = document.createElement('div'); avatar.className = 'avatar'; avatar.textContent = 'p'; avatar.setAttribute('aria-hidden', 'true'); row.append(avatar); }
+      const body = document.createElement('div'); body.className = 'message-body';
+      const meta = document.createElement('div'); meta.className = 'message-meta'; meta.textContent = role === 'assistant' ? 'Profe' : 'Você';
+      const content = document.createElement('p'); content.className = 'message-text'; content.textContent = text;
+      body.append(meta, content);
+      if (role === 'assistant') {
+        const actions = document.createElement('div'); actions.className = 'message-actions';
+        if (speech) { const listen = document.createElement('button'); listen.type = 'button'; listen.className = 'listen-button'; listen.setAttribute('aria-pressed', 'false'); listen.append(icon('sound'), document.createTextNode('Ouvir em espanhol')); listen.addEventListener('click', () => speak(speech, listen)); actions.append(listen); }
+        if (wordsAdded) { const note = document.createElement('span'); note.className = 'word-notice'; note.textContent = '+' + wordsAdded + (wordsAdded === 1 ? ' palavra no caderno' : ' palavras no caderno'); actions.append(note); }
+        if (actions.childElementCount) body.append(actions);
+      }
+      row.append(body); $('messages').append(row); scrollBottom(); return row;
+    }
+    function loadingMessage() {
+      const row = appendMessage('assistant', ''); row.classList.add('pending');
+      const content = row.querySelector('.message-text'); content.setAttribute('aria-label', 'Profe está preparando sua resposta');
+      const dots = document.createElement('span'); dots.className = 'loading-dots'; dots.setAttribute('aria-hidden', 'true');
+      for (let i = 0; i < 3; i++) dots.append(document.createElement('span'));
+      content.append(dots); return row;
+    }
+    function validateResponse(data) {
+      if (!data || typeof data.reply !== 'string' || !data.reply.trim() || data.reply.length > 12000 || typeof data.speech !== 'string' || data.speech.length > 12000 || !Array.isArray(data.words)) throw new Error('A resposta chegou incompleta. Tente novamente.');
+      if (data.quiz !== null && (!data.quiz || typeof data.quiz.id !== 'string' || !Number.isInteger(data.quiz.question_number) || data.quiz.question_number < 1 || data.quiz.question_number > 5 || data.quiz.total !== 5 || typeof data.quiz.complete !== 'boolean' || !Number.isInteger(data.quiz.score) || data.quiz.score < 0 || data.quiz.score > 5)) throw new Error('O quiz chegou incompleto. Tente novamente.');
+      return data;
+    }
+    async function request(path, payload) {
+      const controller = new AbortController(); const timeout = setTimeout(() => controller.abort(), 55000);
+      try {
+        const response = await fetch(path, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload), signal:controller.signal });
+        let data; try { data = await response.json(); } catch (_) { throw new Error('Não foi possível entender a resposta do servidor. Tente novamente.'); }
+        if (!response.ok) {
+          const message = response.status === 429 ? 'Limite gratuito atingido, tente de novo em alguns minutos.' : (typeof data?.error?.message === 'string' ? data.error.message : 'O Profe não conseguiu responder agora. Tente novamente.');
+          const error = new Error(message); error.code = data?.error?.code; throw error;
+        }
+        return validateResponse(data);
+      } catch (error) {
+        if (error.name === 'AbortError') throw new Error('A resposta demorou mais que o esperado. Tente novamente em alguns instantes.');
+        if (error instanceof TypeError) throw new Error('Não foi possível conectar ao Profe. Confira se o servidor está ligado e tente novamente.');
+        throw error;
+      } finally { clearTimeout(timeout); }
+    }
+    function updateQuiz(quiz) {
+      state.quiz = quiz; $('quiz-progress').hidden = !quiz;
+      if (!quiz) { syncControls(); return; }
+      $('quiz-title').textContent = quiz.complete ? '¡Muy bien! Você concluiu o quiz.' : 'Pergunta ' + quiz.question_number + ' de 5';
+      $('quiz-subtitle').textContent = quiz.complete ? quiz.score + ' de 5 acertos. Cada tentativa é aprendizado.' : 'Responda do seu jeito. O Profe ajuda na correção.';
+      $('quiz-exit').textContent = quiz.complete ? 'Voltar à conversa' : 'Sair do quiz';
+      $('progress-track').replaceChildren();
+      for (let i = 0; i < 5; i++) { const segment = document.createElement('span'); if (i < (quiz.complete ? 5 : quiz.question_number - 1)) segment.className = 'done'; $('progress-track').append(segment); }
+      input.placeholder = quiz.complete ? 'Vamos continuar? Escreva para o Profe…' : 'Sua resposta em espanhol…';
+      syncControls();
+    }
+    async function sendMessage(event) {
+      if (event) event.preventDefault();
+      const text = input.value.trim(); if (!text || state.busy) return;
+      if (text.length > 2000) { showError('Escreva uma mensagem de até 2.000 caracteres.'); return; }
+      stopRecording(true); clearError(); state.busy = true; syncControls();
+      const user = appendMessage('user', text); const pending = loadingMessage();
+      const isQuiz = !!activeQuiz();
+      const messages = [...state.history, {role:'user',content:text}].slice(-29);
+      try {
+        const data = await request(isQuiz ? '/api/quiz/answer' : '/api/chat', isQuiz ? {quiz_id:state.quiz.id,question_number:state.quiz.question_number,answer:text} : {level:$('level-select').value,messages});
+        if (isQuiz && !data.quiz) throw new Error('O quiz chegou incompleto. Tente novamente.');
+        pending.remove(); appendMessage('assistant', data.reply, data.speech, collectWords(data.words));
+        if (isQuiz) updateQuiz(data.quiz); else { state.history = [...messages, {role:'assistant',content:data.reply.slice(0,2000)}].slice(-28); if (state.quiz?.complete) updateQuiz(null); }
+        input.value = ''; resizeInput(); $('suggestions').hidden = true;
+      } catch (error) {
+        user.remove(); pending.remove(); showError(error.message);
+        if (error.code === 'quiz_not_found' || error.code === 'quiz_conflict') { updateQuiz(null); showError(error.message + ' Inicie um novo quiz para continuar.'); }
+      } finally { state.busy = false; syncControls(); input.focus({preventScroll:true}); scrollBottom(); }
+    }
+    async function startQuiz() {
+      if (state.busy || activeQuiz()) return;
+      stopRecording(true); stopSpeech(); clearError(); state.busy = true; syncControls();
+      const pending = loadingMessage();
+      try {
+        const data = await request('/api/quiz/start', {level:$('level-select').value});
+        if (!data.quiz || data.quiz.complete || data.quiz.question_number !== 1) throw new Error('Não foi possível iniciar o quiz. Tente novamente.');
+        pending.remove(); const divider = document.createElement('div'); divider.className = 'message-divider'; divider.textContent = 'Uma pausa para praticar · Quiz ' + $('level-select').value; $('messages').append(divider);
+        appendMessage('assistant', data.reply, data.speech, collectWords(data.words)); updateQuiz(data.quiz); input.value = ''; resizeInput(); $('suggestions').hidden = true;
+      } catch (error) { pending.remove(); showError(error.message); }
+      finally { state.busy = false; syncControls(); input.focus({preventScroll:true}); scrollBottom(); }
+    }
+    function leaveQuiz() {
+      if (state.busy) return;
+      if (activeQuiz() && !window.confirm('Sair deste quiz? Seu progresso nele será encerrado.')) return;
+      updateQuiz(null); input.value = ''; input.placeholder = 'Escreva em português ou arrisque em espanhol…'; resizeInput(); clearError(); syncControls(); input.focus(); toast('De volta à conversa. ¿Seguimos?');
+    }
+    function newConversation() {
+      if (state.busy) return;
+      if ((state.history.length || state.quiz) && !window.confirm('Começar uma nova conversa? Suas palavras salvas continuam no caderno.')) return;
+      stopSpeech(); stopRecording(true); state.history = []; updateQuiz(null); $('messages').replaceChildren(); $('suggestions').hidden = false; input.value = ''; input.placeholder = 'Escreva em português ou arrisque em espanhol…'; clearError(); resizeInput(); syncControls(); input.focus(); $('conversation-scroll').scrollTop = 0;
+    }
+    function stopRecording(discard = false) {
+      const recognition = state.recognition;
+      if (!recognition) return;
+      if (discard) { state.recognition = null; state.recording = false; $('mic-button').classList.remove('recording'); $('mic-button').setAttribute('aria-pressed', 'false'); $('mic-button').setAttribute('aria-label', 'Falar em espanhol'); announceVoice(''); }
+      try { recognition.stop(); } catch (_) {}
+    }
+    function toggleRecording() {
+      if (state.busy || !Recognition) return;
+      if (state.recording || state.recognition) { stopRecording(); return; }
+      stopSpeech();
+      const recognition = new Recognition(); state.recognition = recognition;
+      recognition.lang = 'es-ES'; recognition.interimResults = true; recognition.continuous = false;
+      const previousText = input.value.trim(); let failed = false;
+      recognition.onstart = () => { if (state.recognition !== recognition) return; state.recording = true; $('mic-button').classList.add('recording'); $('mic-button').setAttribute('aria-pressed', 'true'); $('mic-button').setAttribute('aria-label', 'Parar de ouvir'); announceVoice('Ouvindo em espanhol… Toque no microfone para parar.'); };
+      recognition.onresult = (event) => {
+        if (state.recognition !== recognition || state.busy) return;
+        const transcript = Array.from(event.results).map(result => result[0].transcript).join(' ');
+        input.value = [previousText, transcript].filter(Boolean).join(' ').slice(0,2000); resizeInput(); syncControls();
+      };
+      recognition.onerror = (event) => {
+        if (state.recognition !== recognition) return;
+        failed = true;
+        const messages = {'not-allowed':'Permita o microfone no navegador para falar. Você também pode digitar.', 'service-not-allowed':'O reconhecimento de voz não está disponível neste navegador. Você pode digitar.', 'audio-capture':'Não encontrei um microfone. Confira se ele está conectado.', 'no-speech':'Não consegui ouvir. Toque no microfone e tente falar novamente.', 'network':'O reconhecimento de voz precisa de conexão. Tente novamente ou digite.', 'language-not-supported':'Seu navegador não oferece reconhecimento em espanhol. Você pode digitar.'};
+        announceVoice(messages[event.error] || (event.error === 'aborted' ? 'Microfone encerrado. Você pode revisar e enviar sua mensagem.' : 'Não foi possível usar o microfone. Tente novamente ou digite.'));
+      };
+      recognition.onend = () => { if (state.recognition !== recognition) return; state.recognition = null; state.recording = false; $('mic-button').classList.remove('recording'); $('mic-button').setAttribute('aria-pressed', 'false'); $('mic-button').setAttribute('aria-label', 'Falar em espanhol'); if (!failed) announceVoice('Revise o que foi transcrito e toque na seta para enviar.'); syncControls(); };
+      try { recognition.start(); } catch (_) { state.recognition = null; state.recording = false; announceVoice('Não foi possível iniciar o microfone. Abra o app em localhost ou HTTPS e permita o acesso.'); }
+    }
+    async function checkHealth() {
+      $('recheck-connection').disabled = true;
+      const controller = new AbortController(); const timeout = setTimeout(() => controller.abort(), 8000);
+      try {
+        const response = await fetch('/api/health', {signal:controller.signal}); const health = await response.json();
+        if (!response.ok || typeof health.configured !== 'boolean') throw new Error();
+        state.ready = health.configured; $('status-text').textContent = health.configured ? 'Pronto para uma boa conversa' : 'Falta só configurar sua chave'; $('status-dot').className = 'status-dot ' + (health.configured ? 'ready' : 'setup');
+        $('setup-banner').hidden = health.configured;
+        if (!health.configured) $('setup-message').textContent = 'O Profe está quase pronto. No arquivo .env do servidor, preencha GEMINI_API_KEY com sua chave do Google AI Studio e reinicie o app. Sua chave fica só no servidor.';
+      } catch (_) { state.ready = null; $('status-text').textContent = 'Servidor sem conexão'; $('status-dot').className = 'status-dot setup'; $('setup-banner').hidden = false; $('setup-message').textContent = 'Não consegui conectar ao servidor. Confira se o app está rodando e verifique a conexão novamente.'; }
+      finally { clearTimeout(timeout); $('recheck-connection').disabled = false; }
+    }
+    function toggleDrawer(open) {
+      const mobile = window.matchMedia('(max-width:760px)').matches;
+      if (!mobile) { $('words-heading').focus(); return; }
+      if (open) state.drawerFocus = document.activeElement;
+      $('sidebar').classList.toggle('open', open); $('sidebar').inert = !open; $('open-words').setAttribute('aria-expanded', String(open));
+      if (open) { $('sidebar').setAttribute('role', 'dialog'); $('sidebar').setAttribute('aria-modal', 'true'); $('close-words').focus(); }
+      else { $('sidebar').removeAttribute('role'); $('sidebar').removeAttribute('aria-modal'); (state.drawerFocus || $('open-words')).focus(); }
+    }
+    function syncDrawer() { const mobile = window.matchMedia('(max-width:760px)').matches; $('sidebar').inert = mobile && !$('sidebar').classList.contains('open'); if (!mobile) { $('sidebar').classList.remove('open'); $('sidebar').removeAttribute('role'); $('sidebar').removeAttribute('aria-modal'); $('open-words').setAttribute('aria-expanded','false'); } }
+    $('chat-form').addEventListener('submit', sendMessage);
+    input.addEventListener('input', () => { resizeInput(); syncControls(); });
+    input.addEventListener('keydown', event => { if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) { event.preventDefault(); sendMessage(); } });
+    $('quiz-button').addEventListener('click', startQuiz);
+    $('nav-quiz').addEventListener('click', () => { if (window.matchMedia('(max-width:760px)').matches) toggleDrawer(false); startQuiz(); }); $('quiz-exit').addEventListener('click', leaveQuiz);
+    $('new-chat').addEventListener('click', newConversation);
+    $('sidebar-new-chat').addEventListener('click', () => { if (window.matchMedia('(max-width:760px)').matches) toggleDrawer(false); newConversation(); }); $('mic-button').addEventListener('click', toggleRecording);
+    $('dismiss-error').addEventListener('click', clearError); $('recheck-connection').addEventListener('click', checkHealth);
+    $('level-select').addEventListener('change', () => { stopSpeech(); clearError(); toast('Nível ' + $('level-select').value + ' escolhido. A próxima resposta acompanha seu ritmo.'); });
+    document.querySelectorAll('[data-prompt]').forEach(button => button.addEventListener('click', () => { input.value = button.dataset.prompt; resizeInput(); syncControls(); input.focus(); }));
+    $('open-words').addEventListener('click', () => toggleDrawer(true)); $('close-words').addEventListener('click', () => toggleDrawer(false)); $('overlay').addEventListener('click', () => toggleDrawer(false));
+    $('words-nav').addEventListener('click', () => $('words-heading').focus());
+    $('chat-nav').addEventListener('click', () => { if (window.matchMedia('(max-width:760px)').matches) toggleDrawer(false); input.focus(); });
+    document.addEventListener('keydown', event => {
+      if (!$('sidebar').classList.contains('open')) return;
+      if (event.key === 'Escape') { event.preventDefault(); toggleDrawer(false); }
+      if (event.key === 'Tab') {
+        const buttons = Array.from($('sidebar').querySelectorAll('button:not([disabled])')).filter(button => button.offsetParent !== null);
+        const first = buttons[0]; const last = buttons[buttons.length - 1];
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === $('words-heading'))) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    });
+    window.addEventListener('resize', syncDrawer);
+    window.addEventListener('pagehide', () => { stopSpeech(); stopRecording(true); });
+    if (!Recognition) { $('mic-button').title = 'Reconhecimento de voz indisponível neste navegador'; announceVoice('Microfone indisponível neste navegador. Para falar, experimente o Chrome ou Edge.'); }
+    readWords(); renderWords(); syncControls(); syncDrawer(); checkHealth();
+  })();
+  </script>
+</body>
+</html>
