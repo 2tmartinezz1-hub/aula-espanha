@@ -295,10 +295,10 @@ async def test_oversized_grade_speech_is_safe_and_does_not_advance(harness):
         assert retried.json()["quiz"]["score"] == 1
 
 
-async def test_default_flash_uses_minimal_thinking(harness):
+async def test_model_uses_provider_default_thinking(harness):
     open_client, replies, requests = harness
     replies.append(gemini_response(lesson()))
     async with open_client() as client:
         assert (await client.post("/api/chat", json=CHAT)).status_code == 200
     outbound = json.loads(requests[0].content)
-    assert outbound["generationConfig"]["thinkingConfig"] == {"thinkingLevel": "minimal"}
+    assert "thinkingConfig" not in outbound["generationConfig"]

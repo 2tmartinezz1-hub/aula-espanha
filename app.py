@@ -236,8 +236,6 @@ def create_app():
                                  "responseSchema": schema, "temperature": 0.7,
                                  "maxOutputTokens": 4096},
         }
-        if model.startswith("gemini-3") and "flash" in model:
-            payload["generationConfig"]["thinkingConfig"] = {"thinkingLevel": "minimal"}
         try:
             response = await application.state.gemini_http.post(
                 f"https://generativelanguage.googleapis.com/v1beta/models/{quote(model, safe='')}:generateContent",
