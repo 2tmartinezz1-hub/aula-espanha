@@ -189,7 +189,7 @@ def create_app():
 
     @asynccontextmanager
     async def lifespan(application):
-        async with httpx.AsyncClient(timeout=httpx.Timeout(45.0, connect=10.0),
+        async with httpx.AsyncClient(timeout=httpx.Timeout(120.0, connect=10.0),
                                      follow_redirects=False) as client:
             application.state.gemini_http = client
             yield

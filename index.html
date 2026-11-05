@@ -202,7 +202,7 @@
       return data;
     }
     async function request(path, payload) {
-      const controller = new AbortController(); const timeout = setTimeout(() => controller.abort(), 55000);
+      const controller = new AbortController(); const timeout = setTimeout(() => controller.abort(), 130000);
       try {
         const response = await fetch(path, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload), signal:controller.signal });
         let data; try { data = await response.json(); } catch (_) { throw new Error('Não foi possível entender a resposta do servidor. Tente novamente.'); }
