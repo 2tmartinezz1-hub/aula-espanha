@@ -121,7 +121,7 @@
         const value = JSON.parse(localStorage.getItem(storageKey) || '[]');
         if (!Array.isArray(value)) return;
         const seen = new Set();
-        state.words = value.filter(safeWord).filter(word => { const key = wordIdentity(word.spanish); if (seen.has(key)) return false; seen.add(key); return true; }).slice(0, 300).map(word => ({spanish: word.spanish.trim(), portuguese: word.portuguese.trim()}));
+        state.words = value.filter(safeWord).filter(word => { const key = wordIdentity(word.spanish); if (seen.has(key)) return false; seen.add(key); return true; }).map(word => ({spanish: word.spanish.trim(), portuguese: word.portuguese.trim()}));
       } catch (_) { toast('Não foi possível abrir seu caderno salvo. Você pode continuar conversando.'); }
     }
     function saveWords() {
@@ -151,7 +151,7 @@
         if (!safeWord(word) || state.words.some(saved => wordIdentity(saved.spanish) === wordIdentity(word.spanish))) continue;
         state.words.unshift({spanish:word.spanish.trim(), portuguese:word.portuguese.trim()}); count++;
       }
-      if (count) { state.words = state.words.slice(0, 300); saveWords(); renderWords(); }
+      if (count) { saveWords(); renderWords(); }
       return count;
     }
     function resetSpeechButton() {
