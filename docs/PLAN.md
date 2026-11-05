@@ -3,9 +3,12 @@
 ## Brainstorming
 
 Um brasileiro iniciante precisa praticar sem ser sobrecarregado. O Profe será uma
-conversa acolhedora: português para explicar, espanhol para praticar. A tela tem
-fundo claro, detalhes em terracota e verde, tipografia legível, atalhos para temas
-do cotidiano e controles grandes no celular. O caderno guarda palavras no próprio
+conversa acolhedora: português para explicar, espanhol para praticar. A referência
+visual enviada pelo usuário em `Tela principal-html.zip` foi aprovada: fundo
+escuro, destaques amarelos, verdes, corais e roxos, tipografia legível e controles
+grandes no celular. O layout tem navegação, conversa e caderno; no celular, o
+caderno abre em um painel. O HTML exportado serve de referência visual, sem
+adicionar seu runtime React à aplicação. O caderno guarda palavras no próprio
 navegador; nenhuma conta é necessária.
 
 A voz usa apenas as APIs gratuitas do navegador. A síntese lê uma versão em
@@ -26,8 +29,14 @@ progresso controlado no servidor.
 
 ## Limites de validação
 
-Os plugins Adobe, GitHub, Canva, Superpowers e Writing Style não estão disponíveis
-nesta sessão. O trabalho usa Git local e o fluxo descrito acima. Sem uma chave
+Adobe, GitHub, Canva e Writing Style não foram expostos no catálogo da sessão.
+As skills Superpowers ficaram disponíveis aos agentes delegados e foram usadas
+para orientar testes e verificação. O trabalho usa Git local. Sem uma chave
 Gemini configurada, as chamadas ao provedor são simuladas nos testes; o app real
 informa a configuração ausente. Nenhuma resposta simulada entra no produto.
+
+O modelo padrão foi atualizado para `gemini-3.8-flash` após consulta ao
+[guia oficial do Google](https://github.com/google-gemini/cookbook/blob/main/quickstarts/Get_started_Generate_Content.ipynb).
+A tabela de preços requer acesso a `ai.google.dev`, salvo no rascunho da rede.
+O modelo permanece configurável em `.env`; nenhuma cota real foi consumida.
 

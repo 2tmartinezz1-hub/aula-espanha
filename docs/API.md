@@ -9,7 +9,7 @@ publicar o diretório do repositório como arquivos estáticos.
 `GET /api/health` → 200:
 
 ```json
-{"status":"ok","configured":false,"model":"gemini-2.5-flash"}
+{"status":"ok","configured":false,"model":"gemini-3.8-flash"}
 ```
 
 `configured` indica apenas presença da chave no servidor, sem validar acesso.
